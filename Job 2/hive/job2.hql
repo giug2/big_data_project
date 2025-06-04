@@ -4,10 +4,6 @@ CREATE TABLE used_cars (
     city STRING,
     daysonmarket INT,
     description STRING,
-    engine_displacement FLOAT,
-    horsepower FLOAT,
-    make_name STRING,
-    model_name STRING,
     price FLOAT,
     year INT
 )

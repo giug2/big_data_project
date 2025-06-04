@@ -17,7 +17,7 @@ def fascia_prezzo(price: str):
 
 # Per ogni record del csv prende i campi di interesse
 for line in sys.stdin:
-    city, daysonmarket, description, _, _, _, _, price, year = line.strip().split(",")
+    city, daysonmarket, description, price, year = line.strip().split(",")
 
     try:
         daysonmarket = int(daysonmarket)
