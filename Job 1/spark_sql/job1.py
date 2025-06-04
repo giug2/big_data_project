@@ -23,11 +23,6 @@ spark = SparkSession.builder \
 
 # Definisce lo schema del dataset
 schema = StructType([
-    StructField(name="city", dataType=StringType(), nullable=True),
-    StructField(name="daysonmarket", dataType=IntegerType(), nullable=True),
-    StructField(name="description", dataType=StringType(), nullable=True),
-    StructField(name="engine_displacement", dataType=DoubleType(), nullable=True),
-    StructField(name="horsepower", dataType=DoubleType(), nullable=True),
     StructField(name="make_name", dataType=StringType(), nullable=True),
     StructField(name="model_name", dataType=StringType(), nullable=True),
     StructField(name="price", dataType=DoubleType(), nullable=True),

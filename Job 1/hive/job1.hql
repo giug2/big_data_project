@@ -19,7 +19,7 @@ SELECT
     MAX(price) AS prezzo_massimo,
     ROUND(AVG(price), 2) AS prezzo_medio,
     COLLECT_SET(year) AS anni_presenti
-FROM cars
+FROM used_cars
 GROUP BY make_name, model_name
 ORDER BY make_name, model_name
 LIMIT 10;
