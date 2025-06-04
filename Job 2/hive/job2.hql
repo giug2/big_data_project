@@ -54,8 +54,17 @@ CREATE TABLE IF NOT EXISTS transform_3 AS
     GROUP BY city, year, categoria;
 
 
+CREATE TABLE IF NOT EXISTS transform_4 AS
+SELECT
+    TRANSFORM(
+        city, year, tier, num_cars, avg_daysonmarket, word_count_list
+    ) USING 'python3 top_3_words.py'
+    AS city, year, tier, num_cars, avg_daysonmarket, top_words
+FROM transform_3;
+
+
 SELECT *
-FROM transform_3
+FROM transform_4
 LIMIT 10;
 
 DROP TABLE used_cars;
