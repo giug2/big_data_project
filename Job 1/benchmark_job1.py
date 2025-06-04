@@ -3,16 +3,18 @@ import time
 import subprocess
 import matplotlib.pyplot as plt
 
-# Configurazione
-tools = ["map-reduce", "spark-core", "spark-sql", "hive"]
+
+# Inizializzazione delle tecnologie e dei benchmark
+tools = ["map_reduce", "spark_sql", "hive"]
 fractions = [0.1, 0.3, 0.5, 0.7, 1.0]
 fraction_labels = [f"{int(f * 100)}%" for f in fractions]
 
-# Cartella per log e grafici
+
+# Creazione cartella per log e grafico
 os.makedirs("logs", exist_ok=True)
 
-
 execution_data = {tool: [] for tool in tools}
+
 
 for tool in tools:
     print(f"\n--- Esecuzione per {tool} in Job 1 ---")
@@ -22,10 +24,10 @@ for tool in tools:
         print(f"Eseguo {tool} Job 1 su dataset: {dataset_name}")
 
         script_path = os.path.join(tool, "run.sh")
-        if not os.path.isfile(script_path):
-            print(f"Script non trovato: {script_path}")
-            execution_data[tool].append(None)
-            continue
+#        if not os.path.isfile(script_path):
+#            print(f"Script non trovato: {script_path}")
+#            execution_data[tool].append(None)
+#            continue
 
         start = time.time()
         process = subprocess.run(
@@ -53,20 +55,19 @@ for tool in tools:
 # Plot dei risultati
 plt.figure(figsize=(10, 6))
 colors = {
-    "map-reduce": "red",
-    "spark-core": "yellow",
-    "spark-sql": "blue",
+    "map_reduce": "red",
+    "spark_sql": "blue",
     "hive": "green"
 }
 
 x_pos = list(range(len(fractions)))
 for tool in tools:
     if any(t is None for t in execution_data[tool]):
-        continue  # skip tool if any execution failed
+        continue  
     plt.plot(
         x_pos,
         execution_data[tool],
-        marker="o",
+        marker="x",
         label=tool,
         color=colors[tool]
     )
