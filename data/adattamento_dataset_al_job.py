@@ -39,4 +39,4 @@ for chunk in chunks:
 nuovo_df = pd.concat(lista_chunks)
 nuovo_df.to_csv("job2_dataset.csv", index=False)
 
-print(f"\nDataset primo job creato")
+print(f"\nDataset secondo job creato")
