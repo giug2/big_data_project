@@ -17,14 +17,17 @@ def fascia_prezzo(price: str):
 
 # Per ogni record del csv prende i campi di interesse
 for line in sys.stdin:
-    city, daysonmarket, description, price, year = line.strip().split(",")
+    if len(line) < 5:
+        continue
+
+    city, daysonmarket, description, price, year = line[0], line[1], line[2], line[3], line[4]
 
     try:
         daysonmarket = int(daysonmarket)
-        fascia_prezzo = fascia_prezzo(price)
-        description = ",".join(description.split())
+        fascia = fascia_prezzo(price)
+        description = " ".join(description.split())
 
         # Stampa i record 
-        print(f"{city}::{year}::{fascia_prezzo}\t1::{daysonmarket}::[{description}]")
+        print(f"{city}::{year}::{fascia}\t1::{daysonmarket}::[{description}]")
     except ValueError:
         continue
