@@ -10,7 +10,7 @@ import argparse
 # Parsing degli argomenti
 parser = argparse.ArgumentParser()
 parser.add_argument("-input", type=str, help="Path del file di input")
-parser.add_argument("-output", type=str, help="Path del file di output")
+#parser.add_argument("-output", type=str, help="Path del file di output")
 args = parser.parse_args()
 
 
@@ -47,7 +47,7 @@ SELECT
     MAX(price) AS prezzo_massimo,
     ROUND(AVG(price), 2) AS prezzo_medio,
     COLLECT_SET(year) AS anni_presenti
-FROM cars
+FROM job1_dataset
 GROUP BY make_name, model_name
 ORDER BY make_name, model_name
 """
@@ -60,7 +60,7 @@ model_stats.createOrReplaceTempView("model_statistics")
 
 # Visualizza la lista di anni in una stringa separandoli con una virgola
 model_stats = model_stats \
-    .withColumn("years_list", concat_ws(",", col("years_list")))
+    .withColumn("anni_presenti", concat_ws(",", col("anni_presenti")))
 
 
 # Mostra le prime 10 righe

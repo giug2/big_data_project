@@ -1,33 +1,44 @@
 #!/usr/bin/env python3
-
 import sys
+import re
 
 
-# Mappa l'auto in base alla fascia di price
 def fascia_prezzo(price: str):
-    price = float(price)
-
+    try:
+        price = float(price)
+    except ValueError:
+        return None
     if price >= 50000:
         return "alto"
-    elif price >= 20000 and price < 50000:
+    elif 20000 <= price < 50000:
         return "medio"
     else:
         return "basso"
 
 
-# Per ogni record del csv prende i campi di interesse
+
 for line in sys.stdin:
-    if len(line) < 5:
+    line = line.strip()
+    if not line:
+        continue
+    fields = line.split(',')
+    if len(fields) < 5:
         continue
 
-    city, daysonmarket, description, price, year = line[0], line[1], line[2], line[3], line[4]
+    city, daysonmarket, description, price, year = fields[0], fields[1], fields[2], fields[3], fields[4]
 
     try:
-        daysonmarket = int(daysonmarket)
-        fascia = fascia_prezzo(price)
-        description = " ".join(description.split())
+        daysonmarket_int = int(daysonmarket)
+        price_tag = fascia_prezzo(price)
+        if price_tag is None:
+            continue
 
-        # Stampa i record 
-        print(f"{city}::{year}::{fascia}\t1::{daysonmarket}::[{description}]")
+        # Tokenizzo e pulisco descrizione: solo parole a-z separate da virgola
+        description = description.lower()
+        words = re.findall(r'\b[a-z]+\b', description)
+        description_clean = ",".join(words)
+
+        print(f"{city}::{year}::{price_tag}\t1::{daysonmarket_int}::{description_clean}")
+
     except ValueError:
         continue

@@ -57,7 +57,7 @@ df = spark.read \
     .select("city", "daysonmarket", "description", "price", "year")
 
 df = df.filter((col("daysonmarket").isNotNull()) & (col("year").isNotNull()))\
-    .createOrReplaceTempView("dataset")
+    .createOrReplaceTempView("job2_dataset")
 
 
 # Query
@@ -73,7 +73,7 @@ SELECT
     COUNT(*) AS numero_macchine,
     AVG(daysonmarket) AS avg_daysonmarket,
     COLLECT_LIST(description) AS descriptions_list
-FROM dataset
+FROM job2_dataset
 GROUP BY city, year, 
     CASE 
         WHEN price < 20000 THEN 'basso'
