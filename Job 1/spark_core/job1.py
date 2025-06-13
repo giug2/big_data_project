@@ -7,7 +7,7 @@ import argparse
 # Parsing degli argomenti
 parser = argparse.ArgumentParser()
 parser.add_argument("-input", type=str, help="Path al file CSV di input")
-#parser.add_argument("-output", type=str, help="Path della cartella di output", default=None)
+#parser.add_argument("-output", type=str, help="Path del file di output")
 args = parser.parse_args()
 
 
