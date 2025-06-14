@@ -9,6 +9,11 @@ Un job che sia in grado di generare le statistiche di ciascuna marca di automobi
 ### Job 2
 Un job che sia in grado di generare un report contenente, per ciascuna città (city) e per ciascun anno (year): il numero di modelli di auto in vendita quell’anno appartenenti a tre fasce di prezzo (alto: sopra i 50K, medio: tra 20K e 50K, basso: inferiore a 20K) indicando, per ciascuna fascia, oltre al numero di auto in quella fascia, la media dei giorni di presenza delle auto sul mercato (daysonmarket) e le tre parole più frequenti che appaiono nella descrizione delle auto (description).
 
+## 🛠️ Tecnologie usate
+- Apache Hadoop (MapReduce)  
+- Apache Spark Core (RDD API)  
+- Apache Spark SQL  
+
 ## Author
 [Gaglione Giulia](https://github.com/giug2)  
 [Marrapesa Sara](https://github.com/saramarrapesa)
