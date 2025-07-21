@@ -14,6 +14,6 @@ Un job che sia in grado di generare un report contenente, per ciascuna città (c
 - Apache Spark Core (RDD API)  
 - Apache Spark SQL  
 
-## Author
+## Autori
 [Gaglione Giulia](https://github.com/giug2)  
 [Marrapesa Sara](https://github.com/saramarrapesa)
